@@ -1,0 +1,20 @@
+# Old version ???!!!
+set -e  DOCKER_TLS_VERIFY
+set -e  DOCKER_CERT_PATH
+set -gx DOCKER_HOST_IP 192.168.64.2
+set -gx DOCKER_HOST "tcp://$DOCKER_HOST_IP:2375"
+
+# Docker-Machine
+# eval ( docker-machine env dev )\n
+
+# Docker
+alias do="docker"
+alias de="docker exec -it"
+
+# Machine
+alias dm="docker-machine"
+
+# Compose
+alias dcc="docker-compose"
+alias dcu="docker-compose up"
+alias dcs="docker-compose stop"
