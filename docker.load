@@ -1,3 +1,27 @@
+function activate-dm
+  set active_machine (cat ~/.docker/machine/machines/.active)
+  eval ( docker-machine env $active_machine )
+end
+
+function use-dm
+  echo $argv > ~/.docker/machine/machines/.active
+  activate-dm
+end
+
+function start-dm
+  docker-machine start $argv
+  use-dm $argv
+end
+
+function stop-dm
+  docker-machine stop $argv
+  clean-dm
+end
+
+function clean-dm
+  rm ~/.docker/machine/machines/.active
+end
+
 # Old version ???!!!
 # set -e  DOCKER_TLS_VERIFY
 # set -e  DOCKER_CERT_PATH
@@ -5,7 +29,9 @@
 # set -gx DOCKER_HOST "tcp://$DOCKER_HOST_IP:2375"
 
 # Docker-Machine
-eval ( docker-machine env dev )
+if test -e ~/.docker/machine/machines/.active
+  activate_docker_machine
+end
 # set -gx DOCKER_TLS_VERIFY "1";
 # set -gx DOCKER_HOST "tcp://10.211.55.3:2376";
 # set -gx DOCKER_CERT_PATH "/Users/kirillov/.docker/machine/machines/dev";
