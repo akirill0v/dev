@@ -26,6 +26,13 @@ function docker-clean-images
   docker rmi -f (docker images -f "dangling=true" -q)
 end
 
+function native-docker
+  set -e DOCKER_TLS_VERIFY
+  set -e DOCKER_CERT_PATH
+  set -e DOCKER_MACHINE_NAME
+  set -e DOCKER_HOST
+end
+
 # Old version ???!!!
 # set -e  DOCKER_TLS_VERIFY
 # set -e  DOCKER_CERT_PATH
