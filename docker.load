@@ -50,7 +50,12 @@ end
 
 # Docker
 alias do="docker"
+alias doo="docker.old"
 alias de="docker exec -it"
+alias deo="docker.old exec -it"
+
+# Utils
+alias do-run="docker run --rm -it -v (pwd):(pwd) -w (pwd)"
 
 # Machine
 alias dm="docker-machine"
@@ -59,3 +64,10 @@ alias dm="docker-machine"
 alias dcc="docker-compose"
 alias dcu="docker-compose up"
 alias dcs="docker-compose stop"
+
+# Kubernetes
+alias k="kubectl"
+alias kg="kubectl get"
+alias kd="kubectl describe"
+alias kpo="kubectl get po"
+alias kps="kubectl get svc"
